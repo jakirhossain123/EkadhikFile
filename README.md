@@ -1,4 +1,4 @@
-# EkadhikFile
+# MultipleFile
 <b>MultipleFIle is help to upload multiple file with preview image multiple time on your web project</b>. You can easily use it for design multiple file upload system on your web project.
 <br/><br/>
 Easy to customize, Upload file, preview image and many others facilities.
