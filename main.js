@@ -67,7 +67,6 @@ $(document).ready(function() {
                     `
                         <li class="selected-ekadik-item">
                             <div class="selected-ekadik-item-content">
-                                <img class="uploaded-file" src="" alt='File'/>
                                 <input type="file" name="`+ inputName +`" class="d-none attach-file-value" id="attachFile`+i+`">
                                 <button type='button' class="remove-ekadik-item"><span class='text'>&times</span></button>
                             </div>
@@ -79,7 +78,7 @@ $(document).ready(function() {
                 let fileReader = new FileReader();
                 fileReader.onload = (function (j) {
                     let file = j.target;
-                    $("#attachFile"+i).after("<img class=\"uploaded-file\" src=\"" + j.target.result + "\" alt='File'/>").removeAttr('id');
+                    $("#attachFile"+i).after("<img class=\"uploaded-file\" src=\"" + j.target.result + "\" alt='No preview'/>").removeAttr('id');
                     $("#attachFile"+i).removeAttr('id')
                 });
                 fileReader.readAsDataURL(f);
@@ -105,69 +104,3 @@ $(document).on('click', '.remove-ekadik-item', function () {
     }
     $(this).parents(".selected-ekadik-item").remove();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// if (window.File && window.FileList && window.FileReader) {
-//     $(".ekadhik-input").on("change", function (e) {
-//         let self = $(this);
-//         let inputName = $(this).attr('name');
-//         var uploadItemLength = self.parents('.ekadhik-field').find('.upload-item').length;
-//         let thisAfterList = self.parents('.ekadhik-field').find('.selected-file-list');
-//         let files = this.files;
-//         for(let i=0; i<files.length; i++) {
-//             if (duplicateCheckArray.indexOf(files[i].name) > -1) {
-//                 alert(files[i].name+ ' already selected.');
-//             } else {
-//                 let dt = new DataTransfer();
-//                 let f = files[i];
-//                 // console.log(f);
-//                 dt.items.add(
-//                     new File(
-//                         [f.slice(0, f.size, f.type)],
-//                         f.name
-//                     ));
-//
-//                 self.parents('.ekadhik-field').find('.selected-file-list').append(
-//                     `
-//                                 <li class="selected-ekadik-item">
-//                                     <div class="selected-ekadik-item-content">
-//                                         <img class="uploaded-file" src="" alt='File'/>
-//                                         <input type="file" name="`+ inputName +`" class="d-none attach-file-value" id="attachFile`+i+`">
-//                                         <button type='button' class="remove-ekadik-item"><span class='text'>&times</span></button>
-//                                     </div>
-//                                 </li>
-//                             `
-//                 );
-//                 let fileReader = new FileReader();
-//                 fileReader.onload = (function (j) {
-//                     let file = j.target;
-//                     $("#attachFile"+i).after("<img class=\"uploaded-file\" src=\"" + j.target.result + "\" alt='File'/>").removeAttr('id');
-//                     $("#attachFile"+i).removeAttr('id')
-//                 });
-//                 fileReader.readAsDataURL(f);
-//
-//
-//                 var back = document.getElementById("attachFile"+i);
-//                 back.files = dt.files;
-//             }
-//             duplicateCheckArray.push(files[i].name);
-//         }
-//         self.parents('.ekadhik-field').find('.ekadhik-input').val('');
-//     });
-// } else {
-//     alert("Your browser doesn't support to File API")
-// }
