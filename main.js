@@ -1,5 +1,13 @@
 let duplicateCheckArray = [];
 $(document).ready(function() {
+
+    $(".ekadhik-input").each(function (){
+       let getName = $(this).attr('name');
+       $(this).attr('data-name', getName);
+       $(this).removeAttr('name');
+    });
+
+
     $(".trigger-ekadhik").on("dragover", function(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -17,7 +25,7 @@ $(document).ready(function() {
             event.preventDefault();
             event.stopPropagation();
             let self = $(this);
-            let attrName = $(this).parents('.ekadhik-field').find('.ekadhik-input').attr('name');
+            let attrName = $(this).parents('.ekadhik-field').find('.ekadhik-input').attr('data-name');
             if(event.originalEvent.dataTransfer){
                 if(event.originalEvent.dataTransfer.files.length) {
                     event.preventDefault();
@@ -32,7 +40,7 @@ $(document).ready(function() {
         // =============== On Trigger =====================
         $(".ekadhik-input").on("change", function (e) {
             let self = $(this);
-            let attrName = $(this).attr('name');
+            let attrName = $(this).attr('data-name');
             upload(this.files, attrName, self);
         });
     } else {
